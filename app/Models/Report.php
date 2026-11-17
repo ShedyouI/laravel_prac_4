@@ -4,9 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Report extends Model
 {
-    use SoftDeletes;
-    protected $guarded = [];
+        use SoftDeletes, HasFactory;
+        protected $fillable = [
+        'number',
+        'description',
+        'user_id',
+        'status_id',
+    ];
+
+    public function status(): BelongsTo
+    {
+        return $this->belongsTo(Status::class);
+    }
 }
+

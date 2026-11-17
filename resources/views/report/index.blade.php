@@ -23,6 +23,7 @@
                     <td>{{ $report->number }}</td>
                     <td>{{ $report->description }}</td>
                     <td>{{ $report->created_at }}</td>
+                    <td>{{$report->status->name}}</td>
                     <td>
                     <a href="{{ route('reports.edit', $report->id) }}">Редактировать</a>
                     <form method="POST" action="{{route('reports.destroy', $report->id)}}">
