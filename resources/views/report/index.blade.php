@@ -15,6 +15,7 @@
                 <th>Номер автомобиля</th>
                 <th>Описание</th>
                 <th>Дата создания</th>
+                <th>Статус</th>
             </tr>
         </thead>
         <tbody>
@@ -23,7 +24,7 @@
                     <td>{{ $report->number }}</td>
                     <td>{{ $report->description }}</td>
                     <td>{{ $report->created_at }}</td>
-                    <td>{{$report->status->name}}</td>
+                    <td>{{ $report->status->name ?? 'Не заполнено'}}</td>
                     <td>
                     <a href="{{ route('reports.edit', $report->id) }}">Редактировать</a>
                     <form method="POST" action="{{route('reports.destroy', $report->id)}}">
@@ -32,8 +33,14 @@
                         <input type="submit" value="Удалить">
                     </form>
                     </td>
+                    <div>
+                        <span>Сортировка по дате создания: </span>
+                        <a href="{{ route('reports.index', ['sort' => 'desc']) }}">Сначала новые.</a>
+                        <a href="{{ route('reports.index', ['sort' => 'asc']) }}">Сначала старые.</a>
+                    </div>
                 </tr>
             @endforeach
+            {{ $reports->links() }}
         </tbody>
     </table>
 </body>
