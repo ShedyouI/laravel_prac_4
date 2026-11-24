@@ -29,7 +29,7 @@ class ReportController extends Controller
         }
 
         $statuses = Status::all();
-        return view('reports.index', compact('reports', 'statuses', 'sort', 'status'));
+        return view('report.index', compact('reports', 'statuses', 'sort', 'status'));
 
 
     }

@@ -52,7 +52,7 @@
                         @endforeach
                     </ul>
                 </div>
-            {{ $reports->links() }}
+            {{ $reports->appends(request()->query())->links() }}
         </tbody>
     </table>
 </body>
